@@ -13,8 +13,7 @@ STOPSIGNAL SIGRTMIN+3
 RUN mkdir -p /run/systemd &&     systemctl set-default multi-user.target
 
 # 创建健康检查页面
-RUN mkdir -p /srv/www && printf '%s
-' 'ubuntu 22.04 on koyeb free instance' > /srv/www/index.html
+RUN mkdir -p /srv/www && echo 'ubuntu 22.04 on koyeb free instance' > /srv/www/index.html
 
 # 暴露端口
 EXPOSE 8000
