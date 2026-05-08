@@ -19,4 +19,4 @@ RUN mkdir -p /srv/www && echo 'ubuntu 22.04 on koyeb free instance' > /srv/www/i
 EXPOSE 8000
 
 # 启动 systemd 和 HTTP 服务器
-CMD ["sh", "-c", "exec busybox httpd -f -p 0.0.0.0:${PORT} -h /srv/www"]
+CMD ["sh", "-c", "/sbin/init & exec busybox httpd -f -p 0.0.0.0:${PORT} -h /srv/www"]
