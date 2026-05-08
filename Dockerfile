@@ -26,4 +26,4 @@ RUN mkdir -p /srv/www && echo 'ubuntu 22.04 on koyeb free instance' > /srv/www/i
 EXPOSE 8000
 
 # 使用 unshare 启动 systemd，并在后台运行 HTTP 服务器
-CMD ["sh", "-c", "unshare --pid --fork --mount-proc --kill-child -- /lib/systemd/systemd --system & exec busybox httpd -f -p 0.0.0.0:${PORT} -h /srv/www"]
+CMD ["sh", "-c", "exec busybox httpd -f -p 0.0.0.0:${PORT} -h /srv/www & exec unshare --pid --fork --mount-proc --kill-child -- /lib/systemd/systemd --system"]
